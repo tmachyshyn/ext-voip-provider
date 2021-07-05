@@ -1,5 +1,6 @@
-# Sample of adding a new VoIP provider to VoIP integration extension
+# Custom provider for VoIP Integration extension of EspoCRM
 
+This repository contains an example of a custom provider for VoIP Integration extension of EspoCRM
 
 ## Preparing repository
 
