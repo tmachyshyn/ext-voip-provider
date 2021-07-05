@@ -1,6 +1,5 @@
-# Template repository for EspoCRM extensions
+# Sample of adding a new VoIP provider to VoIP integration extension
 
-Create a repository for your extension from this template.
 
 ## Preparing repository
 
