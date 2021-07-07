@@ -26,6 +26,10 @@ fclose($fh);
 
 $replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLabel, $description, $author)
 {
+    if (!file_exists($file)) {
+        return;
+    }
+
     $content = file_get_contents($file);
 
     $content = str_replace('{@name}', $name, $content);
@@ -37,10 +41,32 @@ $replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLab
     file_put_contents($file, $content);
 };
 
+$replaceNamespace = function (string $directory) use ($name)
+{
+    $list = new \RecursiveDirectoryIterator($directory);
+
+    foreach (new RecursiveIteratorIterator($list) as $file) {
+        $filePath = $file->getPathname();
+        $fileExtension = pathinfo($filePath, \PATHINFO_EXTENSION);
+
+        if (!in_array(strtolower($fileExtension), ['php'])) {
+            continue;
+        }
+
+        $content = file_get_contents($filePath);
+
+        $content = str_replace('MyModuleName', $name, $content);
+
+        file_put_contents($filePath, $content);
+    }
+};
+
 $replacePlaceholders('package.json');
 $replacePlaceholders('extension.json');
 $replacePlaceholders('config-default.json');
 $replacePlaceholders('README.md');
+
+$replaceNamespace('src/files/application/Espo/Modules/MyModuleName');
 
 rename('src/files/application/Espo/Modules/MyModuleName', 'src/files/application/Espo/Modules/'. $name);
 rename('src/files/client/modules/my-module-name', 'src/files/client/modules/'. $nameHyphen);
