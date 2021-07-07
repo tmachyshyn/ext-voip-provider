@@ -1,0 +1,34 @@
+{
+    "voip": true,
+    "view": "voip:views/admin/integrations/base",
+    "testConnectionButton": true,
+    "fields": {
+        "connectorName": {
+            "type": "varchar",
+            "maxLength": 100,
+            "tooltip": true
+        },
+        "serverUrl": {
+            "type": "url",
+            "maxLength": 200,
+            "required": true,
+            "tooltip": true
+        },
+        "apiUser": {
+            "type": "varchar",
+            "maxLength": 100,
+            "required": true,
+            "tooltip": true
+        },
+        "apiSecret": {
+            "type": "password",
+            "maxLength": 100,
+            "required": true,
+            "tooltip": true
+        },
+        "newProviderCustomField": {
+            "type": "varchar",
+            "tooltip": true
+        }
+    }
+}

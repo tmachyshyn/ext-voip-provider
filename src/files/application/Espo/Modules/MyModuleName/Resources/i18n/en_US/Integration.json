@@ -1,0 +1,14 @@
+{
+    "titles": {
+        "NewProvider": "VoIP &raquo; New Provider"
+    },
+    "fields": {
+        "newProviderCustomField": "Custom Field"
+    },
+    "tooltips" : {
+        "newProviderCustomField": "Tooltip for a Custom Field"
+    },
+    "help": {
+        "NewProvider": "**Integration Setup**\n\nInformation about integration...\n\n WebHook URL: ```{voipPostUrl}```"
+    }
+}
