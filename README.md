@@ -1,6 +1,20 @@
 # Custom provider for VoIP Integration extension of EspoCRM
 
-This repository contains an example of a custom provider for VoIP Integration extension of EspoCRM
+This repository contains an example of a new VoIP Provider for VoIP Integration extension for EspoCRM.
+
+## Required versions:
+
+- EspoCRM v6.0+
+- VoIP Integration v1.17.0+
+
+## VoIP Integration extension:
+
+* [Website](https://www.espocrm.com/extensions/voip-integration/)
+* [Documentation](https://docs.espocrm.com/extensions/voip-integration/asterisk-integration-setup/)
+
+## Creating an extension in EspoCRM
+
+* [Documentation](https://docs.espocrm.com/development/extension-packages/)
 
 ## How to start
 
