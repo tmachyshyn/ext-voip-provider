@@ -144,6 +144,7 @@ return [
 ```
 
 2. Create the `extensions` directory in the root directory of your repository.
+
 3. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
 
 Extensions will be installed automatically after running the command `node build --all` or `node build --install`.
