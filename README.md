@@ -14,20 +14,21 @@ php init.php
 npm install
 ```
 
-3. Create a `config.json` with your settings, (#configuration)[more details].
+3. Create a `config.json` with your settings, [more details](#configuration).
 
 4. Create a database with the defined `name`, `user` and `password` in your `config.json`.
 
-5. Create a `config.php` with the version of your EspoCRM instance, (#config-for-espocrm-instance)[more details].
+5. Create a `config.php` with the version of your EspoCRM instance, [more details](#config-for-espocrm-instance).
 ```php
 <?php
 return [
     'version' => '6.2.0',
 ];
 ```
-6. Put `VoIP Integration` extension package in `extensions` directory, (#installing-addition-extensions)[more details].
 
-7. Build your EspoCRM instance, (#full-espocrm-instance-building)[more details].
+6. Put `VoIP Integration` extension package in `extensions` directory, [more details](#installing-addition-extensions).
+
+7. Build your EspoCRM instance, [more details](#full-espocrm-instance-building).
 ```
 node build --all
 ```
