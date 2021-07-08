@@ -2,18 +2,45 @@
 
 This repository contains an example of a custom provider for VoIP Integration extension of EspoCRM
 
-## Preparing repository
+## How to start
 
-Run:
-
+1. Define a name of your extension.
 ```
 php init.php
 ```
 
-It will ask to enter an extension name and some other information.
+2. Install necessary dependencies:
+```
+npm install
+```
 
-After that, you can remove `init.php` file from your respository. Commit changes and proceed to configuration & building.
+3. Create a `config.json` with your settings, (#configuration)[more details].
 
+4. Create a database with the defined `name`, `user` and `password` in your `config.json`.
+
+5. Create a `config.php` with the version of your EspoCRM instance, (#config-for-espocrm-instance)[more details].
+```php
+<?php
+return [
+    'version' => '6.2.0',
+];
+```
+6. Put `VoIP Integration` extension package in `extensions` directory, (#installing-addition-extensions)[more details].
+
+7. Build your EspoCRM instance, (#full-espocrm-instance-building)[more details].
+```
+node build --all
+```
+
+8. After building, EspoCRM instance with installed extension will be available at `site` directory. You will be able to access it with credentials:
+  - Username: admin
+  - Password: 1
+
+## Development workflow
+
+1. Do development in `src` dir.
+2. Run `node build --copy`.
+3. Test changes in EspoCRM instance at `site` dir.
 
 ## Configuration
 
@@ -119,27 +146,6 @@ return [
 3. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
 
 Extensions will be installed automatically after running the command `node build --all` or `node build --install`.
-
-## Development workflow
-
-1. Do development in `src` dir.
-2. Run `node build --copy`.
-3. Test changes in EspoCRM instance at `site` dir.
-
-## Blocking out extension in Espo
-
-You can block out new entity types right in Espo (using Entity Manager) and then copy generated custom files (`site/custom` dir) to the repository (`src` dir) using `copy-custom.js` script.
-
-1. Create entity types, fields, layouts, relationships in Espo (it should be available in `site` dir after building).
-2. Run `node copy-custom.js`. It will copy all files from `site/custom` to `src/files/application/Modules/{ModuleName}` and apply needed modifications to files.
-3. Remove files from `site/custom`.
-4. Run `node build --copy`. It will copy files from the repository to Espo build (`site/application/Espo/Modules/{ModuleName}` dir).
-5. Clear cache in Espo.
-6. Test in Espo.
-7. Commit changes.
-8. Profit.
-
-You can remove `copy-custom.js` from the repository if you don't plan to use it future.
 
 ## Versioning
 
