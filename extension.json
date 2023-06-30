@@ -4,9 +4,9 @@
     "description": "{@description}",
     "author": "{@author}",
     "acceptableVersions": [
-        ">=5.9.0"
+        ">=7.0.0"
     ],
     "php": [
-        ">=7.2"
+        ">=8.0"
     ]
 }
