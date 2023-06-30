@@ -4,7 +4,7 @@ This repository contains an example of a new VoIP Provider for VoIP Integration 
 
 ## Required versions:
 
-- EspoCRM v6.0+
+- EspoCRM v7.0+
 - VoIP Integration v1.17.0+
 
 ## VoIP Integration extension:
@@ -36,7 +36,7 @@ npm install
 ```php
 <?php
 return [
-    'version' => '6.2.0',
+    'version' => '7.5.0',
 ];
 ```
 
@@ -152,7 +152,7 @@ Necessary steps:
 ```php
 <?php
 return [
-    'version' => '6.2.0',
+    'version' => '7.5.0',
 ];
 
 ```
