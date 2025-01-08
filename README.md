@@ -5,7 +5,7 @@ This repository contains an example of a new VoIP Provider for VoIP Integration 
 ## Required versions:
 
 - EspoCRM v7.0+
-- VoIP Integration v1.17.0+
+- VoIP Integration v2.0+
 
 ## VoIP Integration extension:
 
@@ -19,11 +19,13 @@ This repository contains an example of a new VoIP Provider for VoIP Integration 
 ## How to start
 
 1. Define a name of your extension.
+
 ```
 php init.php
 ```
 
 2. Install necessary dependencies:
+
 ```
 npm install
 ```
@@ -32,17 +34,10 @@ npm install
 
 4. Create a database with the defined `name`, `user` and `password` in your `config.json`.
 
-5. Create a `config.php` with the version of your EspoCRM instance, [more details](#config-for-espocrm-instance).
-```php
-<?php
-return [
-    'version' => '7.5.0',
-];
-```
+5. Put `VoIP Integration` extension package in `extensions` directory, [more details](#installing-addition-extensions).
 
-6. Put `VoIP Integration` extension package in `extensions` directory, [more details](#installing-addition-extensions).
+6. Build your EspoCRM instance, [more details](#full-espocrm-instance-building).
 
-7. Build your EspoCRM instance, [more details](#full-espocrm-instance-building).
 ```
 node build --all
 ```
@@ -73,7 +68,7 @@ Parameters:
 
 ## Config for EspoCRM instance
 
-You can override EspoCRM config. Create `config.php` in the root directory of the repository. This file will be applied after EspoCRM intallation (when building).
+You can override EspoCRM config. Create `config.php` in the root directory of the repository. This file will be applied after EspoCRM installation (when building).
 
 Example:
 
@@ -147,19 +142,9 @@ If your extension requires other extensions, there is a way to install them auto
 
 Necessary steps:
 
-1. Add the current EspoCRM version to the `config.php`:
+1. Create the `extensions` directory in the root directory of your repository.
 
-```php
-<?php
-return [
-    'version' => '7.5.0',
-];
-
-```
-
-2. Create the `extensions` directory in the root directory of your repository.
-
-3. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
+2. Put needed extensions (e.g. `my-extension-1.0.0.zip`) in this directory.
 
 Extensions will be installed automatically after running the command `node build --all` or `node build --install`.
 
