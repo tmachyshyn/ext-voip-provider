@@ -1,0 +1,8 @@
+*
+!.gitignore
+!/codeStyles
+!/fileTemplates
+!/inspectionProfiles
+!misc.xml
+!/jsonSchemas.xml
+!/watcherTasks.xml

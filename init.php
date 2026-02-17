@@ -24,12 +24,15 @@ $fh = fopen('php://stdin', 'r');
 $author = trim(fgets($fh));
 fclose($fh);
 
-$replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLabel, $description, $author)
-{
-    if (!file_exists($file)) {
-        return;
-    }
+fwrite(\STDOUT, "Do you want to use ES6 modules in frontend? [y/n]\n");
+$fh = fopen('php://stdin', 'r');
+$es6 = trim(fgets($fh)) === 'y';
+$bundled = $es6 ? "true" : "false";
+$jsTranspiled = $es6 ? "true" : "false";
+fclose($fh);
 
+$replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLabel, $description, $author, $bundled, $jsTranspiled)
+{
     $content = file_get_contents($file);
 
     $content = str_replace('{@name}', $name, $content);
@@ -37,39 +40,40 @@ $replacePlaceholders = function (string $file) use ($name, $nameHyphen, $nameLab
     $content = str_replace('{@nameLabel}', $nameLabel, $content);
     $content = str_replace('{@description}', $description, $content);
     $content = str_replace('{@author}', $author, $content);
+    $content = str_replace('{@bundled}', $bundled, $content);
+    $content = str_replace('{@jsTranspiled}', $jsTranspiled, $content);
 
     file_put_contents($file, $content);
 };
 
-$replaceNamespace = function (string $directory) use ($name)
-{
-    $list = new \RecursiveDirectoryIterator($directory);
-
-    foreach (new RecursiveIteratorIterator($list) as $file) {
-        $filePath = $file->getPathname();
-        $fileExtension = pathinfo($filePath, \PATHINFO_EXTENSION);
-
-        if (!in_array(strtolower($fileExtension), ['php'])) {
-            continue;
-        }
-
-        $content = file_get_contents($filePath);
-
-        $content = str_replace('MyModuleName', $name, $content);
-
-        file_put_contents($filePath, $content);
-    }
-};
-
 $replacePlaceholders('package.json');
 $replacePlaceholders('extension.json');
+$replacePlaceholders('jsconfig.json');
 $replacePlaceholders('config-default.json');
 $replacePlaceholders('README.md');
+$replacePlaceholders('src/files/custom/Espo/Modules/MyModuleName/Resources/module.json');
 
-$replaceNamespace('src/files/application/Espo/Modules/MyModuleName');
+if ($es6) {
+    $content = <<<CLIENT_JSON
+{
+  "scriptList": [
+      "__APPEND__",
+      "client/custom/modules/{@nameHyphen}/lib/init.js"
+  ]
+}
+CLIENT_JSON;
 
-rename('src/files/application/Espo/Modules/MyModuleName', 'src/files/application/Espo/Modules/'. $name);
-rename('src/files/client/modules/my-module-name', 'src/files/client/modules/'. $nameHyphen);
+    $path = 'src/files/custom/Espo/Modules/MyModuleName/Resources/metadata/app/';
+    mkdir($path, 0755, true);
+
+    $path .= "client.json";
+    file_put_contents($path, $content);
+
+    $replacePlaceholders($path);
+}
+
+rename('src/files/custom/Espo/Modules/MyModuleName', 'src/files/custom/Espo/Modules/'. $name);
+rename('src/files/client/custom/modules/my-module-name', 'src/files/client/custom/modules/'. $nameHyphen);
 
 rename('tests/unit/Espo/Modules/MyModuleName', 'tests/unit/Espo/Modules/'. $name);
 rename('tests/integration/Espo/Modules/MyModuleName', 'tests/integration/Espo/Modules/'. $name);

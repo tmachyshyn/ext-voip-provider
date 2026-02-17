@@ -3,14 +3,26 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sa": "node build --copy && node build --composer-install && php site/vendor/bin/phpstan",
+    "unit-tests": "node build --copy && node build --composer-install && cd site && php vendor/bin/phpunit tests/unit/Espo/Modules/{ModuleName}",
+    "integration-tests": "node build --copy && node build --composer-install && cd site && php vendor/bin/phpunit tests/integration/Espo/Modules/{ModuleName}",
+    "copy": "node build --copy",
+    "composer-install": "node build --composer-install",
+    "sync": "node build --copy && node build --composer-install",
+    "extension": "node build --extension",
+    "clear-cache": "php site/clear_cache.php",
+    "rebuild": "node build --rebuild",
+    "all": "node build --all",
+    "prepare-test": "node build --prepare-test"
   },
+  "type": "module",
   "author": "{@author}",
   "dependencies": {
-    "archiver": "^4.0.1",
-    "fs-extra": "^9.0.0",
-    "mv": "^2.1.1",
-    "request": "^2.88.2",
-    "unzipper": "^0.10.11"
+    "espo-extension-tools": "github:espocrm/extension-tools#0.3.6",
+    "fs-extra": "^9.0.0"
+  },
+  "engines": {
+    "npm": ">=8",
+    "node": ">=18"
   }
 }
