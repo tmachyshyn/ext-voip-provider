@@ -76,18 +76,18 @@ The Call event is handled by the `Espo\Modules\Voip\Entities\VoipEvent` entity.
 
 #### Types
 
-- `Incoming` - `VoipEvent::INCOMING_CALL`
-- `Outgoing` - `VoipEvent::OUTGOING_CALL`
+- `incoming` - `VoipEvent::INCOMING_CALL`
+- `outgoing` - `VoipEvent::OUTGOING_CALL`
 
 #### Statuses
 
-- `Dialing` - `VoipEvent::DIALING`
-- `Ringing` - `VoipEvent::RINGING`
-- `Active` - `VoipEvent::ACTIVE`
-- `Answered` - `VoipEvent::ANSWERED`
-- `No Answer` - `VoipEvent::NO_ANSWER`
-- `Missed` - `VoipEvent::MISSED`
-- `Busy` - `VoipEvent::BUSY`
+- `dialing` - `VoipEvent::DIALING`
+- `ringing` - `VoipEvent::RINGING`
+- `active` - `VoipEvent::ACTIVE`
+- `answered` - `VoipEvent::ANSWERED`
+- `noAnswer` - `VoipEvent::NO_ANSWER`
+- `missed` - `VoipEvent::MISSED`
+- `busy` - `VoipEvent::BUSY`
 
 ### Message
 
