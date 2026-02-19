@@ -3,10 +3,12 @@
     "name": "{@nameLabel}",
     "description": "{@description}",
     "author": "{@author}",
+    "bundled": {@bundled},
     "acceptableVersions": [
-        ">=7.0.0"
+        ">=8.0.0"
     ],
     "php": [
         ">=8.0"
-    ]
+    ],
+    "scripts": []
 }
