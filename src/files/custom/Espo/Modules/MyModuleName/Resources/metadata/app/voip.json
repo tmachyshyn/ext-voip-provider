@@ -1,0 +1,44 @@
+{
+    "cidLookupProcessorClassNameMap": {
+        "NewProvider": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\CidLookup"
+    },
+    "apiClientClassNameMap": {
+        "NewProvider": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\ApiClient"
+    },
+    "actionClassNameMap": {
+        "NewProvider": {
+            "dial": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Actions\\Dial",
+            "testConnection": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Actions\\TestConnection"
+        }
+    },
+    "webhookProcessorClassNameMap": {
+        "NewProvider": "Espo\\Modules\\Voip\\Core\\Webhook\\Service"
+    },
+    "webhookActionProcessorClassNameMap": {
+        "NewProvider": {
+            "call": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Webhook\\Actions\\Call",
+            "message": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Webhook\\Actions\\Message"
+        }
+    },
+    "eventProcessorClassNameMap": {
+        "NewProvider": "Espo\\Modules\\Voip\\Core\\Event\\Service"
+    },
+    "eventActionProcessorClassNameMap": {
+        "NewProvider": {
+            "received": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Event\\Actions\\Received",
+            "updated": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Event\\Actions\\StatusUpdated"
+        }
+    },
+    "messageProcessorClassNameMap": {
+        "NewProvider": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Message"
+    },
+    "messageActionProcessorClassNameMap": {
+        "NewProvider": {
+            "received": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Message\\Actions\\Received",
+            "updated": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Message\\Actions\\StatusUpdated"
+        }
+    },
+    "recordingProcessorClassNameMap": {
+        "NewProvider": "Espo\\Modules\\MyModuleName\\Providers\\NewProvider\\Recording"
+    }
+}
