@@ -1,12 +1,131 @@
-# Template repository for EspoCRM extensions
+# Custom provider for VoIP Integration extension of EspoCRM
 
-Create a repository for your extension from this template.
+This repository contains an example of a new VoIP Provider for VoIP Integration extension for EspoCRM.
 
-## Preparing repository
+## Required versions:
+
+- EspoCRM v8.0+
+- VoIP Integration v2.0+
+
+## VoIP Integration extension:
+
+* [Website](https://www.espocrm.com/extensions/voip-integration/)
+* [Documentation](https://docs.espocrm.com/extensions/voip-integration/asterisk-integration-setup/)
+
+## How to start
+
+1\. Create an `extensions` folder in the root of this repository.
+
+2\. Put there the latest version of Voip Integration extension package, ex. `voip-integration-2.7.0.zip`.
+
+3\. Run the [initialization](#initialization)
+
+```php
+php init.php
+```
+
+4\. Preparation
+
+```bash
+npm install
+```
+
+5\. Create a database and a local [config](#config-for-espocrm-instance).
+
+6\. Build
+
+```bash
+npm run all
+```
+
+7\. Configure a [file watcher](#file-watcher).
+
+## API Examples
+
+### Lookup
+
+```bash
+curl http://ESPO_URL/site/api/v1/Voip/lookup/PROVIDER_ID/ACCESS_KEY?number=0000000000
+```
+
+### Call
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"action":"received", "callId":"CALL_ID", "param1":"value1"}' http://ESPO_URL/site/api/v1/Voip/webhook/PROVIDER_ID/ACCESS_KEY?action=call
+```
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"action":"updated", "callId":"CALL_ID", "status":"answered", "recordingUrl":"RECORDING_URL"}' http://ESPO_URL/site/api/v1/Voip/webhook/PROVIDER_ID/ACCESS_KEY?action=call
+```
+
+### Message
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"action":"received", "messageId":"MESSAGE_ID", "param1":"value1"}' http://ESPO_URL/site/api/v1/Voip/webhook/PROVIDER_ID/ACCESS_KEY?action=message
+```
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"action":"updated", "status":"delivered", "messageId":"MESSAGE_ID"}' http://ESPO_URL/site/api/v1/Voip/webhook/PROVIDER_ID/ACCESS_KEY?action=message
+```
+
+## Parameters
+
+### Call
+
+The Call event is handled by the `Espo\Modules\Voip\Entities\VoipEvent` entity.
+
+#### Types
+
+- `Incoming` - `VoipEvent::INCOMING_CALL`
+- `Outgoing` - `VoipEvent::OUTGOING_CALL`
+
+#### Statuses
+
+- `Dialing` - `VoipEvent::DIALING`
+- `Ringing` - `VoipEvent::RINGING`
+- `Active` - `VoipEvent::ACTIVE`
+- `Answered` - `VoipEvent::ANSWERED`
+- `No Answer` - `VoipEvent::NO_ANSWER`
+- `Missed` - `VoipEvent::MISSED`
+- `Busy` - `VoipEvent::BUSY`
+
+### Message
+
+The Message event is handled by the `Espo\Modules\Voip\Entities\VoipMessage` entity.
+
+#### Types
+
+- `sms` - `VoipMessage::TYPE_SMS`
+- `mms` - `VoipMessage::TYPE_MMS`
+
+#### Directions
+
+- `incoming` - `VoipMessage::DIRECTION_INCOMING`
+- `outgoing` - `VoipMessage::DIRECTION_OUTGOING`
+
+#### Statuses
+
+- `accepted` - `VoipMessage::STATUS_ACCEPTED`
+- `queued` - `VoipMessage::STATUS_QUEUED`
+- `sending` - `VoipMessage::STATUS_SENDING`
+- `sent` - `VoipMessage::STATUS_SENT`
+- `receiving` - `VoipMessage::STATUS_RECEIVING`
+- `received` - `VoipMessage::STATUS_RECEIVED`
+- `delivered` - `VoipMessage::STATUS_DELIVERED`
+- `undelivered` - `VoipMessage::STATUS_UNDELIVERED`
+- `read` - `VoipMessage::STATUS_READ`
+- `failed` - `VoipMessage::STATUS_FAILED`
+- `canceled` - `VoipMessage::STATUS_CANCELED`
+
+## Creating an extension in EspoCRM
+
+* [Documentation](https://docs.espocrm.com/development/extension-packages/)
+
+## Initialization
 
 Run:
 
-```
+```php
 php init.php
 ```
 
