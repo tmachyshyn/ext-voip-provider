@@ -2,10 +2,11 @@
 
 This repository contains an example of a new VoIP Provider for VoIP Integration extension for EspoCRM.
 
-> [!IMPORTANT]
-> The VoIP Integration extension for EspoCRM is a commercially licensed product.
->
-> Any derivative works must not be relicensed. Reselling or redistribution is not permitted.
+## Important
+
+**The VoIP Integration extension for EspoCRM is a commercially licensed product.**
+
+**Any derivative works must not be relicensed. Reselling or redistribution is not permitted.**
 
 ## Required versions:
 
