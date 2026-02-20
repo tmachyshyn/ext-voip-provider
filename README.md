@@ -2,6 +2,11 @@
 
 This repository contains an example of a new VoIP Provider for VoIP Integration extension for EspoCRM.
 
+> [!IMPORTANT]
+> The VoIP Integration extension for EspoCRM is a commercially licensed product.
+>
+> Any derivative works must not be relicensed. Reselling or redistribution is not permitted.
+
 ## Required versions:
 
 - EspoCRM v8.0+
@@ -471,7 +476,3 @@ Or just update everything:
 ```
 npm update
 ```
-
-## License
-
-Change the license in `LICENSE` file. The current license is intended for scripts of this repository. It's not supposed to be used for code of your extension.
